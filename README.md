@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+## Pin Drop with Remarks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project allows users to drop pins on a map, add remarks, and automatically fetch the corresponding address using the **Nominatim OpenStreetMap API**. Users can view all saved pins in a list, and the data is persisted using local storage. The project is built with **React** and **Leaflet** for map rendering.
 
-## Available Scripts
+### Features
 
-In the project directory, you can run:
+- **Drop Pins**: Users can click on the map to drop a pin.
+- **Add Remarks**: After dropping a pin, users can enter a remark in a form.
+- **Fetch Address**: The application uses the Nominatim OpenStreetMap API to fetch the address corresponding to the pin's latitude and longitude.
+- **View Saved Pins**: All saved pins are listed in a sidebar with their remarks, addresses, and coordinates.
+- **Reset Pins**: Users can reset or clear all saved pins.
+- **Responsive Design**: The application is optimized for mobile devices, with a vertical layout and responsive styling.
 
-### `npm start`
+### Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: JavaScript library for building user interfaces.
+- **Leaflet**: Open-source JavaScript library for interactive maps.
+- **OpenStreetMap (Nominatim)**: Geocoding service to fetch addresses from latitude and longitude.
+- **Local Storage**: Pins and remarks are stored in local storage for persistence across sessions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Installation
 
-### `npm test`
+1. **Clone the repository**:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/AbhinavKRN/Map-Tool.git
+   ```
 
-### `npm run build`
+2. **Navigate into the project directory**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   cd Map-Tool
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Install dependencies**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Ensure you have **Node.js** and **npm** installed. Then run:
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Start the development server**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   This will start the application locally at `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Usage
 
-## Learn More
+1. **Drop a Pin**:
+   - Click anywhere on the map to drop a pin.
+   - A form will appear where you can enter a remark for the pin.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Fetch Address**:
+   - After entering the remark, click "Save Pin." The address corresponding to the pin's coordinates will be fetched and displayed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **View Saved Pins**:
+   - All saved pins are visible in the sidebar, showing the remarks, addresses, and coordinates.
 
-### Code Splitting
+4. **Reset Pins**:
+   - Use the "Reset Pins" button to clear all saved pins.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### File Structure
 
-### Analyzing the Bundle Size
+```
+.
+├── public
+├── src
+│   ├── components
+│   │   ├── MapComponent.js  # Main map component with pin drop functionality
+│   │   ├── PinForm.js       # Form for entering pin remarks
+│   │   ├── PinList.js       # Sidebar for listing saved pins
+│   ├── utils
+│   │   └── fetchAddress.js  # Utility function to fetch address from OpenStreetMap
+│   ├── styles
+│   │   └── styles.css       # Styling for the application
+│   ├── App.js               # Main application component
+│   ├── index.js             # Entry point for the React app
+├── .gitignore
+├── package.json
+├── README.md                # Project documentation
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### API Usage
 
-### Making a Progressive Web App
+The project uses the **Nominatim OpenStreetMap API** for reverse geocoding to fetch addresses based on latitude and longitude. The API endpoint used is:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lng}
+```
 
-### Advanced Configuration
+### License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
