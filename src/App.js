@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import MapComponent from './components/MapComponent';
+import PinList from './components/PinList';
+import useLocalStorage from './hooks/useLocalStorage';
+import './styles/styles.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [pins, setPins] = useLocalStorage('pins', []);
+
+    const addPin = (newPin) => {
+        setPins([...pins, newPin]);
+    };
+
+    const clearPins = () => {
+        setPins([]); 
+    };
+
+    return (
+        <div className="app">
+            <div className="map-container">
+                <MapComponent addPin={addPin} />
+            </div>
+            <div className="pin-list-sidebar">
+                <PinList pins={pins} clearPins={clearPins} />
+            </div>
+        </div>
+    );
+};
 
 export default App;
