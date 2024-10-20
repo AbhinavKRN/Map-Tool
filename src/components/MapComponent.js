@@ -29,9 +29,10 @@ const MapComponent = ({ addPin }) => {
     };
 
     const handleAddPin = async (remark) => {
-        const address = await fetchAddress(position.lat, position.lng); 
+        if (!position) return;
+        const address = await fetchAddress(position.lat, position.lng);
         addPin({ lat: position.lat, lng: position.lng, remark, address });
-        setPosition(null); 
+        setPosition(null);
     };
 
     return (
